@@ -5,7 +5,7 @@
 	gc()
   
 	for(lib in c("seqinr", "jackalope", "optparse", "Biostrings", "dplyr", "ape")){
-		suppressPackageStartupMessages(library(lib, lib=$RLIBPATH, repo=$CRANREPO)))
+		suppressPackageStartupMessages(library(lib))
 	}
 	cat(paste0("Packages loaded...", "\n"))
 } #start
