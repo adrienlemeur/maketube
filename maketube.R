@@ -3,10 +3,14 @@
 	rm(list=ls())
 	graphics.off()
 	gc()
-  
-	for(lib in c("seqinr", "jackalope", "optparse", "Biostrings", "dplyr", "ape")){
-		suppressPackageStartupMessages(library(lib, character.only = T))
-	}
+
+	library("seqinr")
+	library("jackalope")
+	library("optparse")
+	library("Biostrings")
+	library("dplyr")
+	library("ape")
+
 	cat(paste0("Packages loaded...", "\n"))
 } #start
 
