@@ -4,12 +4,9 @@
 	graphics.off()
 	gc()
 
-	library("seqinr")
-	library("jackalope")
-	library("optparse")
-	library("Biostrings")
-	library("dplyr")
-	library("ape")
+	for(lib in c("seqinr", "jackalope", "optparse", "Biostrings", "dplyr", "ape")){
+		suppressPackageStartupMessages(library(lib, character.only = T))
+	}
 
 	cat(paste0("Packages loaded...", "\n"))
 } #start
