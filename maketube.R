@@ -241,8 +241,9 @@ for(SV_set in 1:opt$structural_variants){
 			output_tree$tip.label <- sapply(output_tree$tip.label, function(y) gsub(pattern = "t", replacement = "H", x = y))
 
 			write.tree(output_tree, paste0(pop_folder, "/", pop_name, ".nwk"))
-			write_vcf(one_population_object, paste(pop_folder, "/", pop_name, sep = ""), compress = T, overwrite = T)
+			write_vcf(one_population_object, paste(pop_folder, "/", SV_name, "_", pop_name, sep = ""), compress = T, overwrite = T)
 			write_fasta(one_population_object, out_prefix=paste(pop_folder, "/FASTA/", sep = ""), compress = T, text_width = 60, overwrite = T, n_threads = opt$threads)
+			print(paste(pop_folder, "/FASTA/", SV_name, "_", sep = ""))
 
 			number_of_read=floor(as.numeric(100*4000000/150))
 			
@@ -262,13 +263,13 @@ for(SV_set in 1:opt$structural_variants){
 
 			invisible(
 				lapply(all_fasta, function(fasta) {
-						new_name=gsub(pattern = "__", replacement = paste(pop_name, "_", sep = ""), x = fasta)
+						new_name=gsub(pattern = "__", replacement = paste(SV_name, "_", pop_name, "_", sep = ""), x = fasta)
 						file.rename(fasta, new_name)
 					})
 			)
 			invisible(
 				lapply(all_fastq, function(fastq) {
-						new_name=sub(pattern = "/_", replacement = paste("/", pop_name, "_", sep = ""), x = fastq)
+						new_name=sub(pattern = "/_", replacement = paste("/", SV_name, "_", pop_name, "_", sep = ""), x = fastq)
 						file.rename(fastq, new_name)
 					})
 			)
