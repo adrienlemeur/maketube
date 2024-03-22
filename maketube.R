@@ -3,11 +3,10 @@
 	rm(list=ls())
 	graphics.off()
 	gc()
-
+  
 	for(lib in c("seqinr", "jackalope", "optparse", "Biostrings", "dplyr", "ape")){
 		suppressPackageStartupMessages(library(lib, character.only = T))
 	}
-
 	cat(paste0("Packages loaded...", "\n"))
 } #start
 
@@ -40,6 +39,8 @@
 		help="the parameters of the GTR model"),
 	make_option(c("--scaling_factor"), type='numeric', default=as.numeric(5*10^-14),
 		help="indel/snp scaling factor"),
+	make_option(c("--deletion_count"), type='numeric', default=as.numeric(10),
+	            help="number of large deletion regions"),
 	make_option(c("--slope"), type='numeric', default=300,
 		help="Size of the slope between two structural variants"),
 	make_option(c("--threads"), type='numeric', default=4,
@@ -125,14 +126,13 @@ for(SV_set in 1:opt$structural_variants){
 			transposon_jumps[[i]]$new_stop <- insertion_new_stop
 			range_to_pick[slopped_insertion_site] <- range_to_pick[slopped_insertion_site] + 1
 		}
-		
-		deletion_count <- 3
+	
 		deletions <- list()
-		for(i in seq(1, deletion_count)){
+		for(i in seq(1, opt$deletion_count)){
 				#until deletions are completely independant, pick another (position and size)
 				repeat{
 					deletion <- sample(1:length(neo_sequence$sequence), size = 1)
-					deletion_size <- floor(rgamma(1, shape = 1, scale = 3500))
+					deletion_size <- floor(rgamma(1, shape = 2, scale = 3500))
 					deleted_nucleotides <- seq(deletion, deletion + deletion_size)
 					slopped_deletion_site <- seq(deletion - opt$slope, deletion + deletion_size + opt$slope)
 					if(all(range_to_pick[slopped_deletion_site] == 0)) {break}
