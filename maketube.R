@@ -39,7 +39,7 @@
 		help="the parameters of the GTR model"),
 	make_option(c("--scaling_factor"), type='numeric', default=as.numeric(5*10^-14),
 		help="indel/snp scaling factor"),
-	make_option(c("--deletion_count"), type='numeric', default=as.numeric(10),
+	make_option(c("--deletion_count"), type='numeric', default=as.numeric(floor(rnorm(1, 10, 3))),
 	            help="number of large deletion regions"),
 	make_option(c("--slope"), type='numeric', default=300,
 		help="Size of the slope between two structural variants"),
@@ -243,9 +243,8 @@ for(SV_set in 1:opt$structural_variants){
 			write.tree(output_tree, paste0(pop_folder, "/", pop_name, ".nwk"))
 			write_vcf(one_population_object, paste(pop_folder, "/", SV_name, "_", pop_name, sep = ""), compress = T, overwrite = T)
 			write_fasta(one_population_object, out_prefix=paste(pop_folder, "/FASTA/", sep = ""), compress = T, text_width = 60, overwrite = T, n_threads = opt$threads)
-			print(paste(pop_folder, "/FASTA/", SV_name, "_", sep = ""))
 
-			number_of_read=floor(as.numeric(100*4000000/150))
+			#number_of_read=floor(as.numeric(100*4000000/150))
 			
 			illumina(obj = one_population_object, out_prefix = paste(pop_folder, "/FASTQ/", sep = ""),
 				seq_sys = "MSv3",
