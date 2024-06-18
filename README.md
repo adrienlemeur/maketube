@@ -35,9 +35,9 @@ maketube is an artificial genome generator for Mycobacterium tuberculosis
    ```
 #### vcf2metrics.py
   ##### Dependencies
-  - [cyvcf2](https://brentp.github.io/cyvcf2/)
-  - [numpy](https://numpy.org/)
-  - [argparse](https://pypi.org/project/argparse/)
+  - [cyvcf2](https://brentp.github.io/cyvcf2/) (0.30.18)
+  - [numpy](https://numpy.org/) (1.26.4) (⚠ 2.0 produces error)
+  - [argparse](https://pypi.org/project/argparse/) (3.2)
   - math, re, sys, gc & os
 
 Don't want to install all these pesky packages and their dependencies ? There is a [container](https://hub.docker.com/r/alemeur/maketube) !
