@@ -9,24 +9,30 @@ maketube is an artificial genome generator for Mycobacterium tuberculosis
 ### Table of contents
 
 <!--ts-->
-   * [Installation](#install)
-   * [Quickstart](#quickstart)
-   * [Pipeline](#pipeline)
-   * [Usage](#usage)
+   - [Installation](#install)
+   - [Quickstart](#quickstart)
+   - [Pipeline](#pipeline)
+   - [Usage](#usage)
 
 ### <a name="install"></a>Installation
+#### Maketube :
+  ##### Dependencies:
 
-Dependencies & (versions used for developpement):
-For maketube :
+  - [R](https://www.r-project.org/) (v4.1.2)
+  - [ape](https://cran.r-project.org/web/packages/ape/index.html) (v5.8)
+  - [seqinr](https://cran.r-project.org/web/packages/seqinr/index.html) (v4.2-36)
+  - [Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html) (v2.62.0)
+  - [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) (v1.1.4)
+  - [jackalope](https://cran.r-project.org/web/packages/jackalope/index.html) (v1.1.5)
 
-- [R](https://www.r-project.org/) (v4.1.2)
-- [ape](https://cran.r-project.org/web/packages/ape/index.html) (v5.8)
-- [seqinr](https://cran.r-project.org/web/packages/seqinr/index.html) (v4.2-36)
-- [Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html) (v2.62.0)
-- [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) (v1.1.4)
-- [jackalope](https://cran.r-project.org/web/packages/jackalope/index.html) (v1.1.5)
+    ##### Git close & add it to the $PATH
 
-For vcf2metrics :
+#### vcf2metrics.py
+  ##### Dependencies
+  - [Cyvcf2](https://brentp.github.io/cyvcf2/)
+  - [numpy](https://numpy.org/)
+  - [argparse](https://pypi.org/project/argparse/)
+  - standard packages : math, re, sys, gc & os
 
 Don't want to install all these pesky packages and their dependencies ? There is a [container](https://hub.docker.com/r/alemeur/maketube) !
 
