@@ -12,7 +12,8 @@ R package :
 - *[Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html) (sequence manipulation) : v2.62.0
 - [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) (sequence manipulation) : v1.1.4
 - [jackalope](https://cran.r-project.org/web/packages/jackalope/index.html) (substitution & indels genesis ) : v1.1.5
-Don't want to install all these peskies packages ? There is a [container](https://hub.docker.com/r/alemeur/maketube) !
+
+Don't want to install all these pesky packages and their dependencies ? There is a [container](https://hub.docker.com/r/alemeur/maketube) !
 
 
 ```
