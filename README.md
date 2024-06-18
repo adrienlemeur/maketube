@@ -13,7 +13,7 @@ Table of contents
    * [Installation](##Installation)
    * [Usage](##Usage)
 
-#Installation :
+## Installation :
 
 Dependencies & versions used for developpement (bioconducters packages are marked with *):
 - [R](https://www.r-project.org/) : v4.1.2
