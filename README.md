@@ -1,6 +1,6 @@
 
 # maketube
-![test](/maketube_logo.png)
+<img src="/maketube_logo.png" width="100" height="100">
 maketube is an artificial genome generator for Mycobacterium tuberculosis
 
 ## Installation :
