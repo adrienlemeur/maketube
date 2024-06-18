@@ -12,11 +12,14 @@ Table of contents
 <!--ts-->
    * [Installation](#install)
    * [Quickstart](#quickstart)
+   * [Pipeline](#pipeline)
    * [Usage](#usage)
 
 ### <a name="install"></a>Installation
 
 Dependencies & (versions used for developpement) (bioconducters packages are marked with *):
+For maketube :
+
 - [R](https://www.r-project.org/) (v4.1.2)
 - [ape](https://cran.r-project.org/web/packages/ape/index.html) (v5.8)
 - [seqinr](https://cran.r-project.org/web/packages/seqinr/index.html) (v4.2-36)
@@ -24,7 +27,11 @@ Dependencies & (versions used for developpement) (bioconducters packages are mar
 - [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) (v1.1.4)
 - [jackalope](https://cran.r-project.org/web/packages/jackalope/index.html) (v1.1.5)
 
+For vcf2metrics :
+
 Don't want to install all these pesky packages and their dependencies ? There is a [container](https://hub.docker.com/r/alemeur/maketube) !
+
+
 
 ### <a name="quickstart"></a>Quickstart
 
