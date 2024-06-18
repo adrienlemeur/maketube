@@ -27,7 +27,7 @@ maketube is an artificial genome generator for Mycobacterium tuberculosis
 
    ##### Installation procedure
 
-   Install the dependencies
+   Install the dependencies & >>
    ```
    git clone https://github.com/adrienlemeur/maketube.git
    cd maketube
