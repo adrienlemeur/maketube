@@ -25,8 +25,14 @@ maketube is an artificial genome generator for Mycobacterium tuberculosis
   - [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) (v1.1.4)
   - [jackalope](https://cran.r-project.org/web/packages/jackalope/index.html) (v1.1.5)
 
-Clone & add it to your $PATH
+   ##### Installation procedure
 
+   Install the dependencies
+   ```
+   git clone https://github.com/adrienlemeur/maketube.git
+   cd maketube
+   echo "PATH=\"$(pwd)\"/:$PATH" >> ~/.bashrc && source ~/.bashrc
+   ```
 #### vcf2metrics.py
   ##### Dependencies
   - [cyvcf2](https://brentp.github.io/cyvcf2/)
