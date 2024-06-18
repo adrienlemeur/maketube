@@ -11,6 +11,7 @@ Table of contents
 
 <!--ts-->
    * [Installation](#install)
+   * [Quickstart](#quickstart)
    * [Usage](#usage)
 
 ### <a name="install"></a>Installation
@@ -25,7 +26,10 @@ Dependencies & (versions used for developpement) (bioconducters packages are mar
 
 Don't want to install all these pesky packages and their dependencies ? There is a [container](https://hub.docker.com/r/alemeur/maketube) !
 
-### <a name="usage"></a>Usage
+### <a name="quickstart"></a>Quickstart
+
+
+### <a name="usage"></a>Complete usage
 ```
 ./maketube.R \
   --reference (fasta) #fasta files of the reference sequence that will be used as a base
