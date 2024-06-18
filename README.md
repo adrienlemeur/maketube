@@ -10,10 +10,10 @@ Table of contents
 =================
 
 <!--ts-->
-   * [Installation](##Installation)
-   * [Usage](##Usage)
+   * [Installation](#install)
+   * [Usage](#usage)
 
-## Installation :
+### <a name="install"></a>Installation
 
 Dependencies & versions used for developpement (bioconducters packages are marked with *):
 - [R](https://www.r-project.org/) : v4.1.2
