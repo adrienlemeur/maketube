@@ -16,13 +16,13 @@ maketube is an artificial genome generator for Mycobacterium tuberculosis
 
 ### <a name="install"></a>Installation
 
-Dependencies & (versions used for developpement) (bioconducters packages are marked with *):
+Dependencies & (versions used for developpement):
 For maketube :
 
 - [R](https://www.r-project.org/) (v4.1.2)
 - [ape](https://cran.r-project.org/web/packages/ape/index.html) (v5.8)
 - [seqinr](https://cran.r-project.org/web/packages/seqinr/index.html) (v4.2-36)
-- *[Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html) (v2.62.0)
+- [Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html) (v2.62.0)
 - [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) (v1.1.4)
 - [jackalope](https://cran.r-project.org/web/packages/jackalope/index.html) (v1.1.5)
 
