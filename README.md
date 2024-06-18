@@ -10,8 +10,8 @@ Table of contents
 =================
 
 <!--ts-->
-   * [Installation](#Installation)
-   * [Usage](#usage)
+   * [Installation](##Installation)
+   * [Usage](##Usage)
 
 #Installation :
 
