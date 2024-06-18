@@ -43,7 +43,7 @@ maketube is an artificial genome generator for Mycobacterium tuberculosis
 #### Container
 Don't want to install all these pesky packages and their dependencies ? There is a [container](https://hub.docker.com/r/alemeur/maketube) !
 ##### Docker
-````
+```
 docker pull alemeur/maketube:latest
 #run maketube.R
 docker run maketube:latest
