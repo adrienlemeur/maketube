@@ -3,7 +3,7 @@
 maketube is an artificial genome generator for Mycobacterium tuberculosis
 
 Installation :
-```
+
 Developped with :
 Package used (bioc packages are marked with *):
 - R : v4.1.2
@@ -13,7 +13,6 @@ R package :
 - Biostrings (sequence manipulation) : v2.62.0
 - dplyr (sequence manipulation) : v1.1.4
 - jackalope (substitution & indels genesis ) : v1.1.5
-```
 
 Pipeline
 ```
