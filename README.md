@@ -32,7 +32,7 @@ maketube is an artificial genome generator for Mycobacterium tuberculosis
   - [Cyvcf2](https://brentp.github.io/cyvcf2/)
   - [numpy](https://numpy.org/)
   - [argparse](https://pypi.org/project/argparse/)
-  - standard packages : math, re, sys, gc & os
+  - math, re, sys, gc & os
 
 Don't want to install all these pesky packages and their dependencies ? There is a [container](https://hub.docker.com/r/alemeur/maketube) !
 
