@@ -42,14 +42,6 @@ maketube is an artificial genome generator for Mycobacterium tuberculosis
 
 #### Container
 Don't want to install all these pesky packages and their dependencies ? There is a [container](https://hub.docker.com/r/alemeur/maketube) !
-##### Docker
-```
-docker pull alemeur/maketube:latest
-#run maketube.R
-docker run maketube:latest
-#run vcf2metrics.R
-docker exec 
-```
 #### Singularity
 ```
 singularity pull maketube.img docker://alemeur/maketube:latest
@@ -58,8 +50,27 @@ singularity run maketube.img
 #run vcf2metrics.R
 singularity exec maketube.img "/usr/local/bin/maketube/vcf2metrics.py"
 ```
+##### Docker (sill in progress)
+```
+docker pull alemeur/maketube:latest
+#run maketube.R
+docker run maketube:latest
+#run vcf2metrics.R
+# in /usr/local/bin/maketube/vcf2metrics.py
+```
 
 ### <a name="quickstart"></a>Quickstart
+#### Building a set of genome from H37Rv
+```
+cd maketube
+gunzip REF/nonH37Rv_pool_sequence.fasta.gz
+
+Rscript maketube.R \
+   --reference REF/H37Rv.fasta \
+   --transposon REF/H37Rv_transposon.bed \
+   --nonhomoseq_pool REF/nonH37Rv_pool_sequence.fasta
+
+```
 
 
 ### <a name="usage"></a>Complete usage
