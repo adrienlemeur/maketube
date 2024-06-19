@@ -60,7 +60,7 @@ docker run maketube:latest
 ```
 
 ### <a name="quickstart"></a>Quickstart
-#### Building a set of genome from H37Rv
+#### Building a set of genomes from H37Rv
 ```
 cd maketube
 gunzip REF/nonH37Rv_pool_sequence.fasta.gz
@@ -69,9 +69,11 @@ Rscript maketube.R \
    --reference REF/H37Rv.fasta \
    --transposon REF/H37Rv_transposon.bed \
    --nonhomoseq_pool REF/nonH37Rv_pool_sequence.fasta
-
+```
+#### Comparing variants to the reference
 ```
 
+```
 
 ### <a name="usage"></a>Complete usage
 ```
