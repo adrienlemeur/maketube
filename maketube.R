@@ -38,9 +38,9 @@
 		help="the effective population size"),
 	make_option(c("--TCAGI"), type='numeric', default = c(0.172, 0.329, 0.172, 0.329, 0.99978),
 		help="the rate of the different nucleotide (TCAG) + invariants (I)"),
-	make_option(c("--ABCDEF"), type='numeric', default = c(0.65, 0.05, 0.21, 0.27, 0.02, 0.65),
+  	make_option(c("--ABCDEF"), type='numeric', default = c(0.65, 0.05, 0.21, 0.27, 0.02, 0.65),
 		help="the parameters of the GTR model"),
-	make_option(c("--scaling_factor"), type='numeric', default=as.numeric(5*10^-14),
+  	make_option(c("--scaling_factor"), type='numeric', default=as.numeric(5*10^-14),
 		help="indel/snp scaling factor"),
 	make_option(c("--slope"), type='numeric', default=300,
 		help="Size of the slope between two structural variants"),
@@ -145,11 +145,11 @@ for(SV_set in 1:opt$structural_variants){
 				#does the trick for a low number of mutation
 				repeat{
 					insertion_new_start <- sample(1:length(neo_sequence$sequence), 1)
-					insertion_new_stop <- insertion_new_start + abs(transposons_loci[[i]]$stop - transposons_loci[[i]]$start)
+					insertion_new_stop <- insertion_new_start + abs(tranRplotsposons_loci[[i]]$stop - transposons_loci[[i]]$start)
 					insertion_sites <- seq(insertion_new_start, insertion_new_stop)
 					slopped_insertion_site <- seq(insertion_new_start - 300, insertion_new_stop + 300)
 					#do{pick a transposon} while{transposon new positions overlaps with unpickable positions}
-					if(all(range_to_pick[slopped_insertion_site] == 0)) {break}
+					if(sum(range_to_pick[slopped_insertion_site] == 1) == 0) {break}
 				}
 
 				#when done, registers the jump
@@ -214,7 +214,7 @@ for(SV_set in 1:opt$structural_variants){
 				repeat{
 					insertion_site <- sample(which(range_to_pick == 0), 1)
 					slopped_insertion_site <- seq(insertion_site - opt$slope, insertion_site + opt$slope)
-					if(sum(range_to_pick[slopped_insertion_site]) == 0){break}
+					if(sum(range_to_pick[slopped_insertion_site] == 1) == 0){break}
 				}
 
 				nohomoseq.partition[[i]] <- list()
@@ -236,7 +236,7 @@ for(SV_set in 1:opt$structural_variants){
 
 			#insertion of non homologuous sequences		
 			for(insertion_nohomoseq in nohomoseq.partition){
-				insertion_site <- as.numeric(which(names(neo_sequence$sequence) %in% insertion_nohomoseq$start))
+				insertion_site <- as.numeric(max(which(names(neo_sequence$sequence) %in% insertion_nohomoseq$start)))
 				neo_sequence$sequence = c(neo_sequence$sequence[1:insertion_site-1], insertion_nohomoseq$sequence, neo_sequence$sequence[insertion_site:length(neo_sequence$sequence)])
 			}
 
