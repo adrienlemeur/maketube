@@ -4,13 +4,12 @@
   rm(list=ls())
   graphics.off()
   gc()
-
+  
   for(lib in c("seqinr", "jackalope", "optparse", "Biostrings", "dplyr", "ape")){
     suppressPackageStartupMessages(library(lib, character.only = T))
   }
   cat(paste0("Packages loaded...", "\n"))
 } #start
-?jackalope::haps_theta()
 
 {
   args = commandArgs(trailingOnly=TRUE)
@@ -37,7 +36,7 @@
                 help="artificial genome name prefix"),
     make_option(c("--mutation_rate"), type='character', default=as.numeric(1.23e-7),
                 help="the genome wide mutation rate"),
-    make_option(c("--effective_pop"), type='character', default=as.numeric(50000e10),
+    make_option(c("--effective_pop"), type='character', default=as.numeric(700),
                 help="the effective population size"),
     make_option(c("--TCAGI"), type = "character", default = "0.172,0.329,0.172,0.329,0.99978",
                 help="the rate of the different nucleotide (TCAG) + invariants (I)"),
