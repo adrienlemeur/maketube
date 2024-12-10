@@ -75,6 +75,33 @@ Rscript maketube.R \
 
 ```
 
+#### Maketube output
+```
+maketube_run/
+├── my_run_arborescence.tsv		#tsv with strains information (position in the arborescence, corresponding by-products)
+├── SV1					# Independant set of structural variant n°1
+│   ├── my_run_unmuted.fasta		# sequence with structural variants but without snps and small indels
+│   ├── pop1				# population index of SV1
+│   │   ├── FASTA				# Fasta file for every strain, with structural variant Set n°1
+│   │   ├── FASTQ				# Corresponding FASTQ ⚠️ BROKEN ⚠️; Delete this & run independantly art_illumina from the FASTA
+│   │   ├── SV1_pop1.nwk		# Population tree
+│   │   ├── SV1_pop1.vcf.gz		# Multisample VCF containing snps and indels of every haplotype (H1, H2, ..., Hn)
+│   ├── SV1_equivalence.bed		# Backtrack partition used by vcf2metrics.py
+│   └── SV1_SV.bed			# Position of structural variants
+│
+[...]
+│
+└── SV10					# Independant set of structural variant n°10
+    ├── my_run_unmuted.fasta
+    ├── pop1
+    │   ├── FASTA
+    │   ├── FASTQ
+    │   ├── SV10_pop1.nwk
+    │   ├── SV10_pop1.vcf.gz
+    ├── SV10_equivalence.bed
+    └── SV10_SV.bed
+```
+
 ### <a name="usage"></a>Full description
 ```
 ./maketube.R \
