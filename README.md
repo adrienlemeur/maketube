@@ -73,6 +73,7 @@ Rscript maketube.R \
 #### Comparing variants to the reference
 
 vcf2metrics.py compares a sample vcf to the reference VCF built by maketube using the backtrack partition. It can also compare a test VCF to a reference VCF.
+
 Usage :
 ```
 vcf2metrics [-h] -i I [I ...] --reference REFERENCE [REFERENCE ...]
