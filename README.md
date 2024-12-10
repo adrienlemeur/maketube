@@ -60,7 +60,7 @@ docker run maketube:latest
 ```
 
 ### <a name="quickstart"></a>Quickstart
-#### Building a set of genomes from H37Rv
+#### Building a set of genomes from H37Rv (minimal input)
 ```
 cd maketube
 gunzip REF/nonH37Rv_pool_sequence.fasta.gz
@@ -90,10 +90,10 @@ Rscript maketube.R \
   --prefix (string) #prefix of the generated sample \
   -o/--output (string) #name directory to put the results in. Default : maketube_results \
   --mutation_rate (float) #in substitution by generation by site. Default : 1.23*10^-7 \
-  --effective_pop (int) #the dreadful Ne. Default : 50000*10^10 \
-  --TCAGI (R vector) #parameters of the GTR model, in the same order as specified in the flag. Default : c(0.172, 0.329, 0.172, 0.329, 0.99978) \
-  --ABCDEF (R vector) #parameters of the GTR model, in the same order as specified in the flag. Default : c(0.65, 0.05, 0.21, 0.27, 0.02, 0.65) \
-  --scaling_factor (int) #empirical factor to get a number of indel equivalent to 1/8 the number of SNP, as found in natural strains. Only affects the number of indels. Default : 5*10^-14. \
+  --effective_pop (int) #the dreadful Ne. Default : 700 \
+  --TCAGI (R vector) #parameters of the GTR model, in the same order as specified in the flag. Default : "0.172,0.329,0.172,0.329,0" \
+  --ABCDEF (R vector) #parameters of the GTR model, in the same order as specified in the flag. Default : "0.65,0.05,0.21,0.27,0.02,0.65" \
+  --scaling_factor (int) #empirical factor to get a number of indel equivalent to 1/8 the number of SNP, as found in natural strains. Only affects the number of indels. Default : 0.125 \
   --slope (int, > 0) #Size of the distance between 2 structural variants. Default : 300. \
   --threads (int) #Maximum number of threads to use for generating fastq. Default : 4.
 ```
