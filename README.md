@@ -71,8 +71,30 @@ Rscript maketube.R \
    --nonhomoseq_pool REF/nonH37Rv_pool_sequence.fasta
 ```
 #### Comparing variants to the reference
-```
 
+vcf2metrics.py compares a sample vcf to the reference VCF built by maketube using the backtrack partition. It can also compare a test VCF to a reference VCF.
+Usage :
+```
+vcf2metrics [-h] -i I [I ...] --reference REFERENCE [REFERENCE ...]
+                   [--bed BED [BED ...]]
+                   [--backtrack BACKTRACK [BACKTRACK ...]] [--trace]
+                   [--add_col ADD_COL [ADD_COL ...]] [--sample SAMPLE]
+                   [-o O [O ...]]
+options:
+  -h, --help            show this help message and exit
+  -i I [I ...]          folder containing VCF to test against the reference
+  --reference REFERENCE [REFERENCE ...]
+                        reference vcf
+  --bed BED [BED ...]   bed file with the region annotations
+  --backtrack BACKTRACK [BACKTRACK ...]
+                        bed backtrack file produced by maketube
+  --trace
+  --add_col ADD_COL [ADD_COL ...]
+                        Space separated list of columns specifying different
+                        parameters of the experiment if needed
+  -o O [O ...]          output directory
+
+Written by Adrien Le Meur, v??
 ```
 
 #### Maketube output
