@@ -188,8 +188,6 @@ def compareVCF(reference_vcf_dict, test_vcf_dict, bed):
 			comparison_dict[region][variant_type]["FN"] = 0
 			comparison_dict[region][variant_type]["FP"] = 0
 
-	forbidden_regions = ['duplicated_region', 'duplicata_region']
-
 	for variant in test_vcf_dict:
 		if variant in reference_vcf_dict:
 			start = int(test_vcf_dict[variant]['START'])
@@ -205,12 +203,12 @@ def compareVCF(reference_vcf_dict, test_vcf_dict, bed):
 		else:
 			start = int(test_vcf_dict[variant]['START'])
 			comparison_dict["TOTAL"][test_vcf_dict[variant]['CLASS']]["FP"] += 1
-
+			#print(test_vcf_dict[variant])
 			if bed:
 				for regions in bed:
 					for region in bed[regions]:
 						if( (start > int(region[0]) and start < int(region[1])) or (start < int(region[0]) and (start > int(region[1]))) ):
-							comparison_dict[regions][test_vcf_dict[variant]['CLASS']]["TP"] += 1
+							comparison_dict[regions][test_vcf_dict[variant]['CLASS']]["FP"] += 1
 							break
 
 	for variant in reference_vcf_dict:
@@ -221,17 +219,21 @@ def compareVCF(reference_vcf_dict, test_vcf_dict, bed):
 			if bed:
 				for regions in bed:
 					for region in bed[regions]:
-						if( (start > int(region[0]) & start < int(region[1])) or (start < int(region[0]) & start > int(region[1])) ):
+						if( (start > int(region[0]) and start < int(region[1])) or (start < int(region[0]) and start > int(region[1])) ):
 							comparison_dict[regions][reference_vcf_dict[variant]['CLASS']]["FN"] += 1
 							break
 	return(comparison_dict)
+
+
+
 
 def read_backtrack(file):
 	bed_dict = {}
 
 	with open(file) as bed_lines:
 		for line in bed_lines:
-
+			if line.startswith('#'):
+				continue
 			line = line.rstrip().split()
 			key = "_".join([ line[3], line[1], line[2] ])
 
@@ -252,11 +254,13 @@ def backtrack(vcf_dict, backtrack_dict):
 		for interval in backtrack_dict:
 			start = backtrack_dict[interval]["start"]
 			stop = backtrack_dict[interval]["stop"]
-			
-			if( (vcf_dict[variant_key]["START"] >= stop) & (backtrack_dict[interval]["class"] == "insertion") ):
-				ovPOS = ovPOS - backtrack_dict[interval]["ins_start"] + backtrack_dict[interval]["ins_stop"] - 1
 
-			if( (vcf_dict[variant_key]["START"] >= stop) & (backtrack_dict[interval]["class"] == "deletion") ):
+			if( (vcf_dict[variant_key]["START"] >= stop) and (backtrack_dict[interval]["class"] == "insertion") ):
+				#print(ovPOS, sep = "\t")
+				ovPOS = ovPOS - backtrack_dict[interval]["ins_start"] + backtrack_dict[interval]["ins_stop"] - 1
+				#print(backtrack_dict[interval], vcf_dict[variant_key], ovPOS)
+
+			if( (vcf_dict[variant_key]["START"] >= stop) and (backtrack_dict[interval]["class"] == "deletion") ):
 				ovPOS = ovPOS + start - backtrack_dict[interval]["stop"] - 1
 			
 			if(backtrack_dict[interval]["class"] == "transposon"):
@@ -269,10 +273,10 @@ def backtrack(vcf_dict, backtrack_dict):
 					#print("a transposon was muted after its jump"
 					continue
 				#I
-				elif((vcf_dict[variant_key]["START"] > start) & (vcf_dict[variant_key]["START"] < insertion_start) & (insertion_start > start) ):
+				elif((vcf_dict[variant_key]["START"] > start) and (vcf_dict[variant_key]["START"] < insertion_start) and (insertion_start > start) ):
 					ovPOS = ovPOS - (stop - start) - 1
 				#II
-				elif((vcf_dict[variant_key]["START"] < start) & (vcf_dict[variant_key]["START"] > insertion_start) & (insertion_start < start)):
+				elif((vcf_dict[variant_key]["START"] < start) and (vcf_dict[variant_key]["START"] > insertion_start) and (insertion_start < start)):
 					ovPOS = ovPOS + (insertion_stop - insertion_start)
 		new_key = "_".join([ str(ovPOS), vcf_dict[variant_key]["REF"], vcf_dict[variant_key]["ALT"] ])
 		new_dict[new_key] = {}
@@ -284,6 +288,9 @@ def backtrack(vcf_dict, backtrack_dict):
 		new_dict[new_key]["PREVIOUS_START"] = vcf_dict[variant_key]["START"]
 
 	return(new_dict)
+
+
+#THE MAIN STARTS 
 
 args = parser.parse_args()
 
