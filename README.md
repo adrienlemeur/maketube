@@ -70,6 +70,17 @@ Rscript maketube.R \
    --transposon REF/H37Rv_transposon.bed \
    --nonhomoseq_pool REF/nonH37Rv_pool_sequence.fasta
 ```
+#### Comparing a test VCF to the reference VCF
+```
+#Comparing variants found in Haplotype 1 (H1) of population 1
+
+bcftools view --samples H1 maketube_run/SV1/SV1_pop1.vcf.gz > my_reference.vcf.gz
+
+vcf2metrics.py -i my_sample_vcf.vcf.gz --reference my_reference.vcf.gz \
+		--backtrack maketube_run/SV1/SV1_equivalence.bed
+      --bed maketube_run/SV1/SV1_SV.bed
+```
+
 #### Comparing variants to the reference
 
 vcf2metrics.py compares a sample vcf to the reference VCF built by maketube using the backtrack partition. It can also compare a test VCF to a reference VCF.
