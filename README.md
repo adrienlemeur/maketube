@@ -76,9 +76,10 @@ Rscript maketube.R \
 
 bcftools view --samples H1 maketube_run/SV1/SV1_pop1.vcf.gz > my_reference_vcf.vcf.gz
 
-vcf2metrics.py -i my_sample_vcf.vcf.gz --reference my_reference_vcf.vcf.gz \
-		--backtrack maketube_run/SV1/SV1_equivalence.bed
-      --bed maketube_run/SV1/SV1_SV.bed
+vcf2metrics.py -i my_sample_vcf.vcf.gz \
+		--reference my_reference_vcf.vcf.gz \
+		--backtrack maketube_run/SV1/SV1_equivalence.bed \
+		--bed maketube_run/SV1/SV1_SV.bed
 ```
 
 ### Complete usage
