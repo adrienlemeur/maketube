@@ -10,6 +10,10 @@ maketube is an artificial genome generator for Mycobacterium tuberculosis
 
 <!--ts-->
    - [Installation](#install)
+     - [Maketube dependencies](#install_maketube)
+     - [vcf2metrics dependencies](#install_vcf2metrics)
+     - [Installation](#installation_procedure)
+     - [Container](#container)
    - [Quickstart](#quickstart)
    - [Pipeline](#pipeline)
    - [Usage](#usage)
@@ -17,7 +21,7 @@ maketube is an artificial genome generator for Mycobacterium tuberculosis
 
 ### <a name="install"></a>Installation
 
-#### <a name="install_maketube">Maketube</a>:
+#### <a name="install_maketube"></a>Maketube:
   ##### Dependencies:
 
   - [R](https://www.r-project.org/) (v4.1.2)
@@ -27,22 +31,23 @@ maketube is an artificial genome generator for Mycobacterium tuberculosis
   - [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) (v1.1.4)
   - [jackalope](https://cran.r-project.org/web/packages/jackalope/index.html) (v1.1.5)
 
-   ##### Installation procedure
-
-   Install the dependencies & >>
-   ```
-   git clone https://github.com/adrienlemeur/maketube.git
-   cd maketube
-   echo "PATH=\"$(pwd)\"/:$PATH" >> ~/.bashrc && source ~/.bashrc
-   ```
-#### vcf2metrics.py
+#### <a name="install_vcf2metrics"></a>Mvcf2metrics.py
   ##### Dependencies
   - [cyvcf2](https://brentp.github.io/cyvcf2/) (0.30.18)
   - [numpy](https://numpy.org/) (1.26.4) (⚠ 2.0 produces error)
   - [argparse](https://pypi.org/project/argparse/) (3.2)
   - math, re, sys, gc & os
 
-#### Container
+##### <a name="installation_procedure"></a>Installation procedure
+
+Install the dependencies & >>
+  ```
+  git clone https://github.com/adrienlemeur/maketube.git
+  cd maketube
+  echo "PATH=\"$(pwd)\"/:$PATH" >> ~/.bashrc && source ~/.bashrc
+  ```
+
+#### <a name="container">Container
 Don't want to install all these pesky packages and their dependencies ? There is a [container](https://hub.docker.com/r/alemeur/maketube) !
 #### Singularity
 ```
