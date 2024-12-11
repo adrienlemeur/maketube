@@ -174,7 +174,7 @@ maketube_run/
     │   ├── SV10_pop1.vcf.gz
     ├── SV10_equivalence.bed
     └── SV10_SV.bed
-``
+```
 
 
 #### vcf2metrics
