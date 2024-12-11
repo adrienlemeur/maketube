@@ -1,4 +1,4 @@
-
+link github
 <h1 align="center"> Maketube </h1>
 <p align="center">
    <img src="/maketube_logo.png" width="200" height="100">
@@ -14,8 +14,10 @@ maketube is an artificial genome generator for Mycobacterium tuberculosis
    - [Pipeline](#pipeline)
    - [Usage](#usage)
 
+
 ### <a name="install"></a>Installation
-#### Maketube :
+
+#### <a name="install_maketube">Maketube</a>:
   ##### Dependencies:
 
   - [R](https://www.r-project.org/) (v4.1.2)
@@ -50,7 +52,7 @@ singularity run maketube.img
 #run vcf2metrics.R
 singularity exec maketube.img "/usr/local/bin/maketube/vcf2metrics.py"
 ```
-##### Docker (sill in progress)
+##### Docker
 ```
 docker pull alemeur/maketube:latest
 #run maketube.R
@@ -82,11 +84,10 @@ vcf2metrics.py -i my_sample_vcf.vcf.gz \
 		--bed maketube_run/SV1/SV1_SV.bed
 ```
 
-### Complete usage
+### <a name="usage"></a>Complete usage
 
-### <a name="usage"></a>Full description
+### Full description
 ```
-Packages loaded...
 Usage: ./maketube.R [options]
 
 
