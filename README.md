@@ -77,6 +77,7 @@ Rscript maketube.R \
    --transposon REF/H37Rv_transposon.bed \
    --nonhomoseq_pool REF/nonH37Rv_pool_sequence.fasta
 ```
+
 #### Comparing a test VCF to the reference VCF
 ```
 #Comparing variants found in Haplotype 1 (H1) of population 1
@@ -98,22 +99,22 @@ Usage: ./maketube.R [options]
 
 Options:
 	--reference=CHARACTER
-		reference sequence to mutate (fasta)
+		reference sequence to evolve (fasta)
 
 	--transposon=CHARACTER
-		transposon positions in the reference sequence (bed)
+		Inserting Sequences (transposon-like sequences) initial positions in the reference sequence (bed). You can get these by blasting the genome sequence for the IS/transposon-like elements.
 
 	--nonhomoseq_pool=CHARACTER
-		a fasta file with the sequence to pick from to generate a non homologuous sequence
+		a list of kmers (fasta). All kmers should be the same size. Maketube subsamples this list at random and concatenates them to build ancetral-like regions (regions that are present in the evolved genome but not in the reference sequence).
 
 	--duplication_region_size=CHARACTER
-		size of the duplicated region
+		size of the duplicated region.
 
 	--haplotype_count=HAPLOTYPE_COUNT
 		number of haplotype to compute (>=1)
 
 	--pop_count=POP_COUNT
-		number of haplotype to compute (>=1)
+		number of haplotypes to compute (>=1)
 
 	--structural_variants=STRUCTURAL_VARIANTS
 		number of structural variants
@@ -122,7 +123,7 @@ Options:
 		number of deletion region to remove
 
 	--unmuted
-		number of haplotype to compute (>=1)
+		Should maketube create an unmuted sequence of the evolved genome
 
 	-p PREFIX, --prefix=PREFIX
 		artificial genome name prefix
@@ -140,7 +141,7 @@ Options:
 		the parameters of the GTR model
 
 	--indel_scaling_factor=INDEL_SCALING_FACTOR
-		indel/snp scaling factor
+		indel/snp scaling factor. Changes the number of indel.
 
 	--slope=SLOPE
 		Size of the slope between two structural variants
