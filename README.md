@@ -4,7 +4,7 @@ link github
    <img src="/maketube_logo.png" width="200" height="100">
 </p>
 
-maketube is an artificial genome generator for Mycobacterium tuberculosis
+maketube evolves a _Mycobacterium tuberculosis_ genome
 
 ### Table of contents
 
