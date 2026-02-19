@@ -6,7 +6,7 @@ link github
 
 maketube evolves a _Mycobacterium tuberculosis_ genome
 
-### Table of contents
+## Table of contents
 
 <!--ts-->
    - [Installation](#install)
@@ -19,10 +19,10 @@ maketube evolves a _Mycobacterium tuberculosis_ genome
    - [Usage](#usage)
 
 
-### <a name="install"></a>Installation
+## <a name="install"></a>Installation
 
-#### <a name="install_maketube"></a>Maketube:
-  ##### Dependencies:
+### <a name="install_maketube"></a>Maketube:
+  #### Dependencies:
 
   - [R](https://www.r-project.org/) (v4.1.2)
   - [ape](https://cran.r-project.org/web/packages/ape/index.html) (v5.8)
@@ -31,14 +31,14 @@ maketube evolves a _Mycobacterium tuberculosis_ genome
   - [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) (v1.1.4)
   - [jackalope](https://cran.r-project.org/web/packages/jackalope/index.html) (v1.1.5)
 
-#### <a name="install_vcf2metrics"></a>Mvcf2metrics.py
-  ##### Dependencies
+### <a name="install_vcf2metrics"></a>Mvcf2metrics.py
+  #### Dependencies
   - [cyvcf2](https://brentp.github.io/cyvcf2/) (0.30.18)
   - [numpy](https://numpy.org/) (1.26.4) (⚠ 2.0 produces error)
   - [argparse](https://pypi.org/project/argparse/) (3.2)
   - math, re, sys, gc & os
 
-##### <a name="installation_procedure"></a>Installation procedure
+#### <a name="installation_procedure"></a>Installation procedure
 
 Install the dependencies & >>
   ```
@@ -47,9 +47,9 @@ Install the dependencies & >>
   echo "PATH=\"$(pwd)\"/:$PATH" >> ~/.bashrc && source ~/.bashrc
   ```
 
-#### <a name="container">Container
+### <a name="container">Container
 Don't want to install all these pesky packages and their dependencies ? There is a [container](https://hub.docker.com/r/alemeur/maketube) !
-#### Singularity
+### Singularity
 ```
 singularity pull maketube.img docker://alemeur/maketube:latest
 #run maketube.R
@@ -57,7 +57,7 @@ singularity run maketube.img
 #run vcf2metrics.R
 singularity exec maketube.img "/usr/local/bin/maketube/vcf2metrics.py"
 ```
-##### Docker
+#### Docker
 ```
 docker pull alemeur/maketube:latest
 #run maketube.R
@@ -66,8 +66,8 @@ docker run maketube:latest
 # in /usr/local/bin/maketube/vcf2metrics.py
 ```
 
-### <a name="quickstart"></a>Quickstart
-#### Building a set of genomes from H37Rv (minimal input)
+## <a name="quickstart"></a>Quickstart
+### Building a set of genomes from H37Rv (minimal input)
 ```
 cd maketube
 gunzip REF/nonH37Rv_pool_sequence.fasta.gz
@@ -78,7 +78,7 @@ Rscript maketube.R \
    --nonhomoseq_pool REF/nonH37Rv_pool_sequence.fasta
 ```
 
-#### Comparing a test VCF to the reference VCF
+### Comparing a test VCF to the reference VCF
 ```
 #Comparing variants found in Haplotype 1 (H1) of population 1
 
@@ -90,9 +90,9 @@ vcf2metrics.py -i my_sample_vcf.vcf.gz \
 		--bed maketube_run/SV1/SV1_SV.bed
 ```
 
-### <a name="usage"></a>Complete usage
+## <a name="usage"></a>Complete usage
 
-### Full description
+## Full description
 ```
 Usage: ./maketube.R [options]
 
@@ -156,7 +156,7 @@ Options:
 		Show this help message and exit
 ```
 
-#### Maketube output
+### Maketube output
 ```
 maketube_run/
 ├── my_run_arborescence.tsv		#tsv with strains information (position in the arborescence, corresponding by-products)
@@ -184,7 +184,7 @@ maketube_run/
 ```
 
 
-#### vcf2metrics
+### vcf2metrics
 
 vcf2metrics.py compares a sample vcf to the reference VCF built by maketube using the backtrack partition. It can also compare a test VCF to a reference VCF.
 
