@@ -1,12 +1,13 @@
-link github
 <h1 align="center"> Maketube </h1>
 <p align="center">
    <img src="/maketube_logo.png" width="200" height="100">
 </p>
 
-maketube evolves a _Mycobacterium tuberculosis_ genome
+maketube introduces structural variants and short variants to a _Mycobacterium tuberculosis_ reference genome sequence. Variants found by aligning these genomes to the reference genome can be compared to the original ones in order to study the impact of structural variants on variant calling pipeline performances. For exemples of benchmarking pipelines, and the associated article check the sister repo adrienlemeur/maketube_supplemental.
 
-## Table of contents
+If you have trouble running these tools / suggestions / comments, feel free to send me a mail at : alemeur at biophylo dot com
+
+### Table of contents
 
 <!--ts-->
    - [Installation](#install)
@@ -19,10 +20,10 @@ maketube evolves a _Mycobacterium tuberculosis_ genome
    - [Usage](#usage)
 
 
-## <a name="install"></a>Installation
+### <a name="install"></a>Installation
 
-### <a name="install_maketube"></a>Maketube:
-  #### Dependencies:
+#### <a name="install_maketube"></a>Maketube:
+  ##### Dependencies:
 
   - [R](https://www.r-project.org/) (v4.1.2)
   - [ape](https://cran.r-project.org/web/packages/ape/index.html) (v5.8)
@@ -31,14 +32,14 @@ maketube evolves a _Mycobacterium tuberculosis_ genome
   - [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) (v1.1.4)
   - [jackalope](https://cran.r-project.org/web/packages/jackalope/index.html) (v1.1.5)
 
-### <a name="install_vcf2metrics"></a>Mvcf2metrics.py
-  #### Dependencies
+#### <a name="install_vcf2metrics"></a>vcf2metrics.py
+  ##### Dependencies
   - [cyvcf2](https://brentp.github.io/cyvcf2/) (0.30.18)
   - [numpy](https://numpy.org/) (1.26.4) (⚠ 2.0 produces error)
   - [argparse](https://pypi.org/project/argparse/) (3.2)
   - math, re, sys, gc & os
 
-#### <a name="installation_procedure"></a>Installation procedure
+##### <a name="installation_procedure"></a>Installation procedure
 
 Install the dependencies & >>
   ```
@@ -47,9 +48,9 @@ Install the dependencies & >>
   echo "PATH=\"$(pwd)\"/:$PATH" >> ~/.bashrc && source ~/.bashrc
   ```
 
-### <a name="container">Container
+#### <a name="container">Container
 Don't want to install all these pesky packages and their dependencies ? There is a [container](https://hub.docker.com/r/alemeur/maketube) !
-### Singularity
+#### Singularity
 ```
 singularity pull maketube.img docker://alemeur/maketube:latest
 #run maketube.R
@@ -57,7 +58,7 @@ singularity run maketube.img
 #run vcf2metrics.R
 singularity exec maketube.img "/usr/local/bin/maketube/vcf2metrics.py"
 ```
-#### Docker
+##### Docker
 ```
 docker pull alemeur/maketube:latest
 #run maketube.R
@@ -66,8 +67,17 @@ docker run maketube:latest
 # in /usr/local/bin/maketube/vcf2metrics.py
 ```
 
-## <a name="quickstart"></a>Quickstart
-### Building a set of genomes from H37Rv (minimal input)
+### <a name="quickstart"></a>Quickstart
+#### Benchmark pipeline
+
+ <img src="/maketube_pipeline.png">
+A. Maketube generates artificial genomes
+
+B. The user extract variants from these genomes using genome wide alignment software (minimap2, nucmer) OR by generating an _in silico_ sequencing run and a pipeline (alignment + variant caller).
+
+C. vcf2metrics.py compare the list of variants to the original list of variants and provide precision and recall
+
+#### Building a set of genomes from H37Rv (minimal input)
 ```
 cd maketube
 gunzip REF/nonH37Rv_pool_sequence.fasta.gz
@@ -78,9 +88,9 @@ Rscript maketube.R \
    --nonhomoseq_pool REF/nonH37Rv_pool_sequence.fasta
 ```
 
-### Comparing a test VCF to the reference VCF
+#### Comparing a test VCF to the reference VCF
+Comparing variants found in Haplotype 1 (H1) of population 1. 
 ```
-#Comparing variants found in Haplotype 1 (H1) of population 1
 
 bcftools view --samples H1 maketube_run/SV1/SV1_pop1.vcf.gz > my_reference_vcf.vcf.gz
 
@@ -90,61 +100,61 @@ vcf2metrics.py -i my_sample_vcf.vcf.gz \
 		--bed maketube_run/SV1/SV1_SV.bed
 ```
 
-## <a name="usage"></a>Complete usage
+### <a name="usage"></a>Complete usage
 
-## Full description
+#### Full description
 ```
 Usage: ./maketube.R [options]
 
-
 Options:
-	--reference=CHARACTER
-		reference sequence to evolve (fasta)
+	--reference=file
+		reference genome sequence to evolve (fasta file with header)
 
-	--transposon=CHARACTER
-		Inserting Sequences (transposon-like sequences) initial positions in the reference sequence (bed). You can get these by blasting the genome sequence for the IS/transposon-like elements.
+	--transposon=file
+		Inserting Sequences (transposon-like sequences) initial positions in the reference sequence (bed) : CHROM_NAME\tTRANSPOSON_START\tTRANSPOSON_STOP
+		You can get these by blasting the genome sequence for the IS/transposon-like elements.
 
-	--nonhomoseq_pool=CHARACTER
-		a list of kmers (fasta). All kmers should be the same size. Maketube subsamples this list at random and concatenates them to build ancetral-like regions (regions that are present in the evolved genome but not in the reference sequence).
+	--nonhomoseq_pool=file
+		a list of kmers (fasta). All kmers should be the same size. Maketube subsamples this list at random and concatenates them to build ancetral-like regions (regions that are present in the evolved genome but not in the reference sequence). Check REF/nonH37Rv_pool_sequence.fasta.gz for reference.
 
-	--duplication_region_size=CHARACTER
-		size of the duplicated region.
+	--duplication_region_size=string
+		size of the duplicated region. Default : 150kbp
 
-	--haplotype_count=HAPLOTYPE_COUNT
-		number of haplotype to compute (>=1)
+	--haplotype_count=numeric
+		number of haplotype (genome from the same population) to compute (>=1). Final number of haplotype is haplotype_count * pop_count * structural_variants. Default = 10.
 
-	--pop_count=POP_COUNT
-		number of haplotypes to compute (>=1)
+	--pop_count=numeric
+		number of populations to compute (>=1).
 
-	--structural_variants=STRUCTURAL_VARIANTS
-		number of structural variants
+	--structural_variants=numeric
+		number of set of independant structural variants. All the populations from the same set of structural variants share the same structural variants at the same positions.. Default = 2.
 
-	--deletion_count=DELETION_COUNT
-		number of deletion region to remove
+	--deletion_count=numeric
+		number of deletion region to remove. Default = 3. 
 
 	--unmuted
-		Should maketube create an unmuted sequence of the evolved genome
+		Maketube will only write the unmutated evolved genome (with structural variants but no snps and no indels) if the flag is specified.
 
 	-p PREFIX, --prefix=PREFIX
-		artificial genome name prefix
+		artificial genome name prefix.
 
-	--mutation_rate=MUTATION_RATE
-		the genome wide mutation rate
+	--mutation_rate=string
+		substitution/site/generation. Default to 1.23e-7.
 
 	--effective_pop=EFFECTIVE_POP
-		the effective population size
+		the effective population size. Default to 2000.
 
-	--TCAGI=TCAGI
-		the rate of the different nucleotide (TCAG) + invariants (I)
+	--TCAGI=numerics
+		the rate of the different nucleotides (TCAG) + invariants (I). Comma separated list of numerics. Default to "0.172,0.329,0.172,0.329,0"
 
-	--ABCDEF=ABCDEF
-		the parameters of the GTR model
+	--ABCDEF=numerics
+		the parameters of the GTR model (check the jackalope package for reference). Comma separated list of numerics. Default to "0.65,0.05,0.21,0.27,0.02,0.65".
 
-	--indel_scaling_factor=INDEL_SCALING_FACTOR
-		indel/snp scaling factor. Changes the number of indel.
+	--indel_scaling_factor=numerics
+		indel/snp ratio. Default to 0.125, ie. 1 indel will be created for every 8 SNPs. 0 to remove indels.
 
-	--slope=SLOPE
-		Size of the slope between two structural variants
+	--slope=numerics
+		when writing the structural variant neighbouring positions, the number of nucleotide around each structural variants for a snps or indels to be considered "near" it. You may specify comma separated value. Default = "50,300" : maketube will write 2 entries in the bed file for structural variants neighbouring region. One for SNP <= 50bp around the structural variant and one for SNP <= 300bp.
 
 	--threads=THREADS
 		Number of threads used for fastq generation
@@ -156,7 +166,7 @@ Options:
 		Show this help message and exit
 ```
 
-### Maketube output
+#### Maketube output
 ```
 maketube_run/
 ├── my_run_arborescence.tsv		#tsv with strains information (position in the arborescence, corresponding by-products)
@@ -184,9 +194,9 @@ maketube_run/
 ```
 
 
-### vcf2metrics
+#### vcf2metrics
 
-vcf2metrics.py compares a sample vcf to the reference VCF built by maketube using the backtrack partition. It can also compare a test VCF to a reference VCF.
+vcf2metrics.py compares a sample vcf to the reference VCF built by maketube using the backtrack partition. It can also compare a test VCF to a reference VCF without backtracking. 
 
 Usage :
 ```
