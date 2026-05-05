@@ -339,8 +339,10 @@ for sample_vcf in args.i:
 				PPV=TP/(TP+FP)
 			else:
 				PPV = 'NA'
+
 			if PPV != 'NA' and RECALL != 'NA':
-				F1 = (PPV + RECALL)/2
+				F1 = 2*TP/(2TP + FP + FN)
+				#F1 = (PPV + RECALL)/2
 			else:
 				F1 = 'NA'
 			print(args.pipeline[0], args.sample[0], args.SV[0], args.depth[0], region_type.replace(" ", "_"), region_type.replace(" ", "_"), variant_type, TP, FP, FN, RECALL, PPV, F1, sep = "\t")
