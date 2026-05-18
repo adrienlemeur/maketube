@@ -114,7 +114,6 @@ def subtract_bed_from_vcf(vcf_dict, subtrack):
 			new_dict[variant_key] = vcf_dict[variant_key]
 	return(new_dict)
 
-
 #the backtrack
 #input : a vcf dictionary with positions on the reference genome
 #output : a vcf dictionary with the positions on the genome after adding the structural variants
@@ -143,14 +142,17 @@ def backtrack(vcf_dict, backtrack_dict):
 				insertion_stop = backtrack_dict[interval]["ins_stop"]
 
 				if( vcf_dict[variant_key]["START"] <= insertion_stop & vcf_dict[variant_key]["START"] >= insertion_start ):
-					#print("a transposon was muted after its jump"
 					continue
-				#I
+				#I : a transposon that was before the variant jumped to a position after the variant
+				# add the size of the transposon to the variant position
 				elif((vcf_dict[variant_key]["START"] > start) and (vcf_dict[variant_key]["START"] < insertion_start) and (insertion_start > start) ):
 					ovPOS = ovPOS - (stop - start) - 1
-				#II
+				#II : a transposon that was after the variant jumped to a position before the variant
+				# remove the size of the transposon to the variant position
 				elif((vcf_dict[variant_key]["START"] < start) and (vcf_dict[variant_key]["START"] > insertion_start) and (insertion_start < start)):
 					ovPOS = ovPOS + (insertion_stop - insertion_start)
+			#print(vcf_dict[variant_key]["START"], ovPOS, vcf_dict[variant_key]["REF"], vcf_dict[variant_key]["ALT"], "\t".join(map(str, [backtrack_dict[interval][i] for i in backtrack_dict[interval]])), sep="\t")
+
 		new_key = "_".join([ str(ovPOS), vcf_dict[variant_key]["REF"], vcf_dict[variant_key]["ALT"] ])
 		new_dict[new_key] = {}
 		new_dict[new_key]["START"] = ovPOS

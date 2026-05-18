@@ -1,0 +1,7 @@
+start	stop	source_position	type	length	ref	alt	class
+360188	360189	355979	snp	1	G	A	FP
+361450	361451	REF	snp	1	G	A	FN
+
+364263	364264	360054	snp	1	T	C	FP
+365525	365526	REF	snp	1	T	C	FN
+

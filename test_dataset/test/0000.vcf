@@ -1,0 +1,65 @@
+##fileformat=VCFv4.2
+##FILTER=<ID=PASS,Description="All filters passed">
+##fileDate=##fileDate=2025-07-07|01:07:50PM|CEST|+0200
+##source=all2vcf
+##reference=REF/H37Rv.fasta
+##contig=<ID=H37Rv,length=4411532>
+##INFO=<ID=INDEL,Number=0,Type=Flag,Description="Indicates that the variant is an INDEL.">
+##contig=<ID=NC_000962.3.anc>
+##bcftools_normVersion=1.19+htslib-1.19.1
+##bcftools_normCommand=norm -a -m- -Oz /home/alemeur/SCRATCH/tmp.vcf.gz; Date=Mon Jul  7 13:07:50 2025
+##bcftools_normVersion=1.23.1+htslib-1.23.1
+##bcftools_normCommand=norm -a -m- test_VCF/SV1_pop1_H1.vcf.gz; Date=Wed May  6 21:37:48 2026
+##bcftools_viewVersion=1.23.1+htslib-1.23.1
+##bcftools_viewCommand=view -v snps -Oz; Date=Wed May  6 21:37:48 2026
+##bcftools_isecVersion=1.23.1+htslib-1.23.1
+##bcftools_isecCommand=isec -p test test_VCF/SV1_pop1_H1.filtered.vcf.gz H1.reference.foretracked.vcf.gz; Date=Wed May  6 21:37:49 2026
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+H37Rv	357241	.	G	A	.	.	.
+H37Rv	394337	.	C	T	.	.	.
+H37Rv	443016	.	G	A	.	.	.
+H37Rv	458487	.	G	A	.	.	.
+H37Rv	463652	.	A	C	.	.	.
+H37Rv	466073	.	A	C	.	.	.
+H37Rv	467970	.	T	C	.	.	.
+H37Rv	471664	.	A	G	.	.	.
+H37Rv	473436	.	A	G	.	.	.
+H37Rv	488622	.	T	C	.	.	.
+H37Rv	489081	.	A	C	.	.	.
+H37Rv	503413	.	A	G	.	.	.
+H37Rv	523402	.	A	G	.	.	.
+H37Rv	539939	.	A	G	.	.	.
+H37Rv	762129	.	C	T	.	.	.
+H37Rv	762886	.	T	G	.	.	.
+H37Rv	1191854	.	C	T	.	.	.
+H37Rv	1194057	.	G	A	.	.	.
+H37Rv	1540592	.	A	G	.	.	.
+H37Rv	1984627	.	G	A	.	.	.
+H37Rv	1991733	.	A	G	.	.	.
+H37Rv	2105973	.	G	A	.	.	.
+H37Rv	2246216	.	C	G	.	.	.
+H37Rv	2359481	.	C	T	.	.	.
+H37Rv	2363221	.	A	G	.	.	.
+H37Rv	2421155	.	G	T	.	.	.
+H37Rv	2425022	.	C	T	.	.	.
+H37Rv	2476366	.	C	A	.	.	.
+H37Rv	2477028	.	T	C	.	.	.
+H37Rv	2530710	.	A	G	.	.	.
+H37Rv	2541963	.	A	G	.	.	.
+H37Rv	2629483	.	G	T	.	.	.
+H37Rv	2735477	.	A	C	.	.	.
+H37Rv	2737670	.	G	A	.	.	.
+H37Rv	2774826	.	T	C	.	.	.
+H37Rv	2779324	.	T	C	.	.	.
+H37Rv	2781253	.	T	G	.	.	.
+H37Rv	2800225	.	T	C	.	.	.
+H37Rv	2805103	.	C	T	.	.	.
+H37Rv	3021251	.	G	C	.	.	.
+H37Rv	3023175	.	G	A	.	.	.
+H37Rv	3028510	.	G	T	.	.	.
+H37Rv	3111078	.	C	A	.	.	.
+H37Rv	3530580	.	C	A	.	.	.
+H37Rv	3545958	.	T	C	.	.	.
+H37Rv	3694314	.	T	C	.	.	.
+H37Rv	3791255	.	A	C	.	.	.
+H37Rv	3880581	.	T	G	.	.	.
