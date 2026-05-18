@@ -156,7 +156,7 @@ for(SV_set in 1:opt$structural_variants){
         #until post-jump position does not overlap with an unpickable nucleotide, retry
         #does the trick for a low number of variations
         repeat{
-          insertion_new_start <- sample(max(opt$slope):length(neo_sequence$sequence)-max(opt$slope), 1)
+          insertion_new_start <- sample(max(opt$slope):(length(neo_sequence$sequence)-max(opt$slope)), 1)
           insertion_new_stop <- insertion_new_start + abs(transposons_loci[[i]]$stop - transposons_loci[[i]]$start)
           #insertion_sites <- seq(insertion_new_start, insertion_new_stop)
           slopped_insertion_site <- seq(insertion_new_start - max(opt$slope), insertion_new_start + max(opt$slope))
@@ -177,7 +177,7 @@ for(SV_set in 1:opt$structural_variants){
       for(i in seq(1, deletion_count)){
         #until deletions.partition are completely independant, pick another (position and size)
         repeat{
-          deletion <- sample(max(opt$slope):length(neo_sequence$sequence)-max(opt$slope), size = 1)
+          deletion <- sample(max(opt$slope):(length(neo_sequence$sequence)-max(opt$slope)), size = 1)
           deletion_size <- floor(rgamma(1, shape = 1, scale = 3500))
           #deleted_nucleotides <- seq(deletion, deletion + deletion_size)
           slopped_deletion_site <- seq(deletion - max(opt$slope), deletion + deletion_size + max(opt$slope))
@@ -197,7 +197,7 @@ for(SV_set in 1:opt$structural_variants){
       
       #this one works a bit differently
       duplication_region_window_start <- sample(1:(length(range_to_pick)-opt$duplication_region_size), size = 1)
-      range_to_pick[duplication_region_window_start:duplication_region_window_start+opt$duplication_region_size] = 1
+      range_to_pick[duplication_region_window_start:(duplication_region_window_start+opt$duplication_region_size)] = 1
 
       nohomoseq.list = list(info = list(cumulative_size = 0, wanted_size = sample(4400000*seq(0.002, 0.008, by = 0.00001), 1)))
       i = 1
