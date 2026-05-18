@@ -3,7 +3,7 @@
    <img src="/maketube_logo.png" width="200" height="100">
 </p>
 
-maketube introduces structural variants and short variants to a _Mycobacterium tuberculosis_ reference genome sequence. Variants found by aligning these genomes to the reference genome can be compared to the original ones in order to study the impact of structural variants on variant calling pipeline performances. For exemples of benchmarking pipelines, and the associated article check the sister repo adrienlemeur/maketube_supplemental.
+maketube introduces structural variants and short variants to a _Mycobacterium tuberculosis_ reference genome sequence. Variants found by aligning these genomes to the reference genome can be compared to the original ones in order to study the impact of structural variants on variant calling pipeline performances. For exemples of benchmarking pipelines, and the associated article check the sister repo adrienlemeur/maketube\_supplemental. Code at adrienlemeur/maketube. Only maketube genome adrienlemeur/maketube\_genomes.
 
 If you have trouble running these tools / suggestions / comments, feel free to send me a mail at : alemeur at biophylo dot com
 
