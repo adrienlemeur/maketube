@@ -50,6 +50,8 @@ Install the dependencies & >>
 
 #### <a name="container">Container
 Don't want to install all these pesky packages and their dependencies ? There is a [container](https://hub.docker.com/r/alemeur/maketube) !
+** THE CONTAINER IS SEVERELY OUTDATED. WIP. **
+
 #### Singularity
 ```
 singularity pull maketube.img docker://alemeur/maketube:latest
