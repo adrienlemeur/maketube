@@ -30,6 +30,7 @@ If you have trouble running these tools / suggestions / comments, feel free to s
   - [seqinr](https://cran.r-project.org/web/packages/seqinr/index.html) (v4.2-36)
   - [Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html) (v2.62.0)
   - [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) (v1.1.4)
+  - [Rhtslib](https://www.bioconductor.org/packages//release/bioc/html/Rhtslib.html) (v3.23)
   - [jackalope](https://cran.r-project.org/web/packages/jackalope/index.html) (v1.1.5)
 
 #### <a name="install_vcf2metrics"></a>vcf2metrics.py
